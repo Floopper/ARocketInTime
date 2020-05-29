@@ -17,5 +17,9 @@ public class MusicPlayer : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+        if(currentScene > 11)
+        {
+            Destroy(gameObject);
+        }
     }
 }
