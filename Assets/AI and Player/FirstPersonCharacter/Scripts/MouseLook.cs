@@ -15,6 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool smooth;
         public float smoothTime = 5f;
         public bool lockCursor = true;
+        public bool gamePaused = false;
 
 
         private Quaternion m_CharacterTargetRot;
@@ -76,13 +77,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if(Input.GetKeyUp(KeyCode.Escape))
             {
-                m_cursorIsLocked = false;
+                gamePaused = true;
+                if (gamePaused)
+                {
+                    m_cursorIsLocked = false;
+                }
+                else
+                {
+                    m_cursorIsLocked = true;
+                }
             }
-            else if(Input.GetMouseButtonUp(0))
-            {
-                m_cursorIsLocked = true;
-            }
-
             if (m_cursorIsLocked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
